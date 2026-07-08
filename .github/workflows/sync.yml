@@ -20,7 +20,10 @@ jobs:
 
           git clone https://x-access-token:${{ secrets.CLIENT_TOKEN }}@github.com/Meet7715/repo-client.git client
 
-          rsync -av --exclude='.git' ./ client/
+          rsync -av \
+            --exclude='.git' \
+            --exclude='.github' \
+            ./ client/
 
           cd client
 
@@ -29,5 +32,3 @@ jobs:
           git commit -m "Auto sync from source" || echo "No changes"
 
           git push origin main
-
-# test sync
