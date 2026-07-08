@@ -18,7 +18,7 @@ jobs:
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
 
-          git clone https://x-access-token:${{ secrets.Testing_Client }}@github.com/KartikZCoding/testing-repo.git client
+          git clone https://x-access-token:${{ secrets.CLIENT_TOKEN }}@github.com/KartikZCoding/testing-repo.git client
 
           rsync -av \
             --exclude='.git' \
