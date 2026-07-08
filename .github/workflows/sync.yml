@@ -1,0 +1,30 @@
+name: Sync Client Repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v4
+
+      - name: Push to client repo
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+
+          git clone https://x-access-token:${{ secrets.CLIENT_TOKEN }}@github.com/Meet7715/repo-client.git client
+
+          cp -r * client/ || true
+
+          cd client
+
+          git add .
+          git commit -m "Auto sync from source" || echo "No changes"
+
+          git push origin main
