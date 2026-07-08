@@ -29,3 +29,5 @@ jobs:
           git commit -m "Auto sync from source" || echo "No changes"
 
           git push origin main
+
+# test sync
